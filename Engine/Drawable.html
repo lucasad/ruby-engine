@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Engine::Drawable
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Engine/Drawable.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Engine.html" title="Engine (module)">Engine</a></span></span>
+     &raquo; 
+    <span class="title">Drawable</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Engine::Drawable
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/engine/drawable.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The only method the user needs to define is `draw(renderer)` which should
+render the object into the renderer</p>
+
+<p>Classes including this should also define @w and @h to be some non-zero
+dimensions</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#h-instance_method" title="#h (instance method)">- (Object) <strong>h</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute h.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#w-instance_method" title="#w (instance method)">- (Object) <strong>w</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute w.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(klass) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Do the dirty work   Wraps the draw method so that it handles the render
+target switching and caches the output    Overrides the dup method so that
+a new texture is used.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clean%3F-instance_method" title="#clean? (instance method)">- (Boolean) <strong>clean?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Needs to be re-rendered.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#draw-instance_method" title="#draw (instance method)">- (Object) <strong>draw</strong>(renderer) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Draw the item into a texture.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#place-instance_method" title="#place (instance method)">- (Object) <strong>place</strong>(renderer, texture, x, y) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Place the texture at the (x,y) position in the renderer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#place_center-instance_method" title="#place_center (instance method)">- (Object) <strong>place_center</strong>(renderer, texture) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Place the texture in the center of the renderer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render-instance_method" title="#render (instance method)">- (Object) <strong>render</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Re-render.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="h-instance_method">
+  
+    - (<tt>Object</tt>) <strong>h</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute h</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_h'>h</span>
+  <span class='ivar'>@h</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="w-instance_method">
+  
+    - (<tt>Object</tt>) <strong>w</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute w</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_w'>w</span>
+  <span class='ivar'>@w</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="included-class_method">
+  
+    + (<tt>Object</tt>) <strong>included</strong>(klass) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Do the dirty work</p>
+
+<p>Wraps the draw method so that it handles the render target switching and
+caches the output</p>
+
+<p>Overrides the dup method so that a new texture is used</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span> <span class='id identifier rubyid_klass'>klass</span>
+    <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_class_exec'>class_exec</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid__draw'>_draw</span> <span class='op'>=</span> <span class='id identifier rubyid_instance_method'>instance_method</span> <span class='symbol'>:draw</span>
+        <span class='id identifier rubyid_define_method'>define_method</span> <span class='symbol'>:draw</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_renderer'>renderer</span><span class='op'>|</span> 
+            <span class='kw'>unless</span> <span class='ivar'>@texture</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='ivar'>@_size</span> <span class='op'>==</span> <span class='lbracket'>[</span><span class='id identifier rubyid_w'>w</span><span class='comma'>,</span><span class='id identifier rubyid_h'>h</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>then</span>
+                <span class='ivar'>@texture</span> <span class='op'>=</span> <span class='id identifier rubyid_renderer'>renderer</span><span class='period'>.</span><span class='id identifier rubyid_create_texture'>create_texture</span> <span class='const'>SDL2</span><span class='op'>::</span><span class='const'>PixelFormat</span><span class='op'>::</span><span class='const'>ARGB8888</span><span class='comma'>,</span> <span class='const'>SDL2</span><span class='op'>::</span><span class='const'>Texture</span><span class='op'>::</span><span class='const'>ACCESS_TARGET</span><span class='comma'>,</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span><span class='id identifier rubyid_h'>h</span>
+                <span class='ivar'>@clean</span> <span class='op'>=</span> <span class='kw'>false</span>
+            <span class='kw'>end</span>
+            <span class='kw'>unless</span> <span class='id identifier rubyid_clean?'>clean?</span> <span class='kw'>then</span> 
+                <span class='id identifier rubyid_old_target'>old_target</span> <span class='op'>=</span> <span class='id identifier rubyid_renderer'>renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_target'>render_target</span>
+                <span class='id identifier rubyid_renderer'>renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_target'>render_target</span> <span class='op'>=</span> <span class='ivar'>@texture</span>
+                <span class='id identifier rubyid__draw'>_draw</span><span class='period'>.</span><span class='id identifier rubyid_bind'>bind</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='id identifier rubyid_renderer'>renderer</span> 
+                <span class='id identifier rubyid_renderer'>renderer</span><span class='period'>.</span><span class='id identifier rubyid_render_target'>render_target</span> <span class='op'>=</span> <span class='id identifier rubyid_old_target'>old_target</span>
+                <span class='ivar'>@clean</span> <span class='op'>=</span> <span class='kw'>true</span>
+            <span class='kw'>end</span>
+            <span class='ivar'>@_size</span> <span class='op'>=</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span><span class='id identifier rubyid_h'>h</span>
+            <span class='ivar'>@texture</span>
+        <span class='kw'>end</span> 
+
+        <span class='id identifier rubyid__dup'>_dup</span> <span class='op'>=</span> <span class='id identifier rubyid_instance_method'>instance_method</span> <span class='symbol'>:dup</span>
+        <span class='id identifier rubyid_define_method'>define_method</span> <span class='symbol'>:dup</span> <span class='kw'>do</span>
+            <span class='id identifier rubyid_new'>new</span> <span class='op'>=</span> <span class='id identifier rubyid__dup'>_dup</span><span class='period'>.</span><span class='id identifier rubyid_bind'>bind</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+            <span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span> <span class='symbol'>:@texture</span><span class='comma'>,</span> <span class='kw'>nil</span> 
+            <span class='kw'>return</span> <span class='id identifier rubyid_new'>new</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="clean?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>clean?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Needs to be re-rendered</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clean?'>clean?</span>
+    <span class='ivar'>@clean</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="draw-instance_method">
+  
+    - (<tt>Object</tt>) <strong>draw</strong>(renderer) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Draw the item into a texture</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span> <span class='id identifier rubyid_renderer'>renderer</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="place-instance_method">
+  
+    - (<tt>Object</tt>) <strong>place</strong>(renderer, texture, x, y) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Place the texture at the (x,y) position in the renderer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_place'>place</span> <span class='id identifier rubyid_renderer'>renderer</span><span class='comma'>,</span> <span class='id identifier rubyid_texture'>texture</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span>
+    <span class='id identifier rubyid_tw'>tw</span><span class='comma'>,</span><span class='id identifier rubyid_th'>th</span> <span class='op'>=</span> <span class='id identifier rubyid_texture'>texture</span><span class='period'>.</span><span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_texture'>texture</span><span class='period'>.</span><span class='id identifier rubyid_h'>h</span>
+    <span class='id identifier rubyid_dst'>dst</span> <span class='op'>=</span> <span class='const'>SDL2</span><span class='op'>::</span><span class='const'>Rect</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_tw'>tw</span><span class='comma'>,</span><span class='id identifier rubyid_th'>th</span> 
+    <span class='id identifier rubyid_renderer'>renderer</span><span class='period'>.</span><span class='id identifier rubyid_copy'>copy</span> <span class='id identifier rubyid_texture'>texture</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_dst'>dst</span>
+    <span class='ivar'>@texture</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="place_center-instance_method">
+  
+    - (<tt>Object</tt>) <strong>place_center</strong>(renderer, texture) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Place the texture in the center of the renderer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_place_center'>place_center</span> <span class='id identifier rubyid_renderer'>renderer</span><span class='comma'>,</span> <span class='id identifier rubyid_texture'>texture</span>
+    <span class='id identifier rubyid_tw'>tw</span><span class='comma'>,</span><span class='id identifier rubyid_th'>th</span> <span class='op'>=</span> <span class='id identifier rubyid_texture'>texture</span><span class='period'>.</span><span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_texture'>texture</span><span class='period'>.</span><span class='id identifier rubyid_h'>h</span>
+    <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='op'>-</span><span class='id identifier rubyid_tw'>tw</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span>
+    <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='op'>-</span><span class='id identifier rubyid_th'>th</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span>
+    <span class='id identifier rubyid_place'>place</span> <span class='id identifier rubyid_renderer'>renderer</span><span class='comma'>,</span> <span class='id identifier rubyid_texture'>texture</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span>
+    <span class='ivar'>@texture</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="render-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Re-render</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/engine/drawable.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
+    <span class='ivar'>@clean</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Mar 18 11:31:02 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.0).
+</div>
+
+  </body>
+</html>
