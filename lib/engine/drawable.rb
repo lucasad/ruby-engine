@@ -1,4 +1,8 @@
 module Engine
+
+##
+# The only method the user needs to define is `draw(renderer)` which should render the object into the renderer  
+# Classes including this should also define @w and @h to be some non-zero dimensions
 module Drawable
     attr_reader :w, :h
 
@@ -13,6 +17,12 @@ module Drawable
     # Re-render
     def render
         @clean = false
+    end
+
+    ##
+    # Needs to be re-rendered
+    def clean?
+        @clean
     end
 
     
@@ -35,36 +45,37 @@ module Drawable
         @texture
     end
 
-    #def _draw renderer
-    #        @texture ||= renderer.create_texture SDL2::PixelFormat::ARGB8888, SDL2::Texture::ACCESS_TARGET, w,h
-    #        unless @clean then 
-    #            old_target = renderer.render_target
-    #            renderer.render_target = @texture
-    #            draw renderer 
-    #            renderer.render_target = old_target
-    #            @clean = true
-    #        end
-    #        @texture
-    #end
-
     ##
-    # Do the dirty work
-    # Wraps the draw method so that it handles changing out the renderer's targets and creates a default texture of :w,:h
+    # Do the dirty work  
+    # Wraps the draw method so that it handles the render target switching and caches the output   
+    # Overrides the dup method so that a new texture is used  
     def self.included klass
-        _draw = klass.instance_method :draw
-        klass.send :define_method, :draw, proc { |renderer| 
-            @texture ||= renderer.create_texture SDL2::PixelFormat::ARGB8888, SDL2::Texture::ACCESS_TARGET, w,h
-            unless @clean then 
-                old_target = renderer.render_target
-                renderer.render_target = @texture
-                _draw.bind(self).call renderer 
-                renderer.render_target = old_target
-                @clean = true
-            end
-            @texture
-        }   
-    end 
+        klass.class_exec do
+            _draw = instance_method :draw
+            define_method :draw do |renderer| 
+                unless @texture and (@_size == [w,h]) then
+                    @texture = renderer.create_texture SDL2::PixelFormat::ARGB8888, SDL2::Texture::ACCESS_TARGET, w,h
+                    @clean = false
+                end
+                unless clean? then 
+                    old_target = renderer.render_target
+                    renderer.render_target = @texture
+                    _draw.bind(self).call renderer 
+                    renderer.render_target = old_target
+                    @clean = true
+                end
+                @_size = w,h
+                @texture
+            end 
 
+            _dup = instance_method :dup
+            define_method :dup do
+                new = _dup.bind(self).call
+                new.instance_variable_set :@texture, nil 
+                return new
+            end
+        end
+    end 
 end
 end    
 

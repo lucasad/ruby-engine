@@ -3,18 +3,31 @@ require 'sdl2'
 #:doc:#
 
 module Engine
+# This class handles polling for input, updates, and rendering
 class MainLoop
+
+    # The increment to update in 
     Quantum = 20
+
+    # Creates a new main loop
+    # @param game [Game] The game to play
+    # @param renderer [Renderer] The renderer to render the `game` with 
     def initialize game, renderer
         @game = game
         @renderer = renderer
         @inputs = []
     end
 
+    ##
+    # Adds an input to be handled
+    # @param input [Input] The input handler
     def add_input input
         @inputs.push input
+        self
     end
 
+    ##
+    # Run the loop until the process quits
     def run
         @last = SDL2::get_ticks
         @updates = 0

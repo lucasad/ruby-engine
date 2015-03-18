@@ -43,9 +43,12 @@ class Text
         render
     end
 
-    def draw renderer
-        @texture = renderer.create_texture_from @surface
+    def render
+        @texture = nil
     end
-    include Drawable
+
+    def draw renderer
+        @texture ||= renderer.create_texture_from @surface
+    end
 end
 end

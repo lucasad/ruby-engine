@@ -6,8 +6,10 @@ module Engine
     ##
     # The class to inherit for input handling
     class Input
+        attr_accessor :window
         ##
         # Handles the SDL2::Event passed to it
+        # @param event [SDL2::Event]
         def handle_event event
             case event
                 when SDL2::Event::MouseMotion
@@ -43,6 +45,28 @@ module Engine
         def _quit event;end
         def _window event;end
     public
+
+    ##
+    # A mixin to handle text input
+    # this should be used over they keyboard input because it properly implements keyboard layouts and supports non-ascii languages
+    module TextInput
+        protected
+        def text_init window=@window
+            @window_id = @window.window_id
+        end 
+
+        ##
+        # Called whenever the user types text in the @window
+        # @param text [String] The text fragment that was entered. This is *usually* a single character, but it doesn't have to be and consumers of this shouldn't make that assumption.
+        def text_input text 
+        end
+
+        def _text_input event
+            return unless event.window_id == @window_id
+            text_input event.text
+        end
+    end
+
     ##
     # A mixin to handle mouse input
     module MouseInput
@@ -50,21 +74,21 @@ module Engine
         ##
         # Initialize the mouse input
         # which refers to which mouse to handle input for
-        def mouse_init which=0
+        def mouse_init window=@window, which=0
             @which=which
             @pressed = {}
+            @window_id = window.window_id
         end
 
         #:nodoc:#
         def _mouse_motion event
-            return unless event.which==@which 
+            return unless event.which==@which and event.window_id == @window_id and event.window_id == @window_id 
             @x,@y = event.x,event.y
             mouse_move event.xrel,event.yrel
         end
     
         def _mouse_button event
-            p event
-            return unless event.which==@which 
+            return unless event.which==@which and event.window_id == @window_id 
             @x,@y = event.x,event.y
             button = event.button
         end
@@ -79,7 +103,7 @@ module Engine
             mouse_release event.button
         end
         def _mouse_wheel event    
-            return unless event.which==@which 
+            return unless event.which==@which and event.window_id == @window_id 
             mouse_scroll event.x,event.y
         end
         #:doc:#
@@ -182,7 +206,7 @@ module Engine
         ##
         # Sets the window to check input for
         # It MUST be called during the class's initialization
-        def window_init window
+        def window_init window=@window
             @window_id = window.window_id
         end
     
